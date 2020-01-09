@@ -10,45 +10,11 @@
 		<link rel="apple-touch-icon" href="../image/icon.png" />
 
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
-		<link rel="stylesheet" type="text/css" href="../css/location.css">
+		<link rel="stylesheet" type="text/css" href="../css/join.css">
 		
 		<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZAZ2BTMifZewwe09LV66SHU9IScj3-lQ&callback=initMap" async defer></script>
 		<script type="text/javascript">
-			function initMap(){
-				// 위치 좌표
-				var location = {lat: -6.179363, lng: 35.740788};
-				
-				// 맵 생성
-				var map = new google.maps.Map(document.getElementById('map'), {
-					center: location,
-					scrollwheel: true,
-					zoom: 17
-				});
-				
-				// 정보 문구 생성
-				var contentString = "<h2>Majengo</h2>";
-				contentString += "<p>버스 정류장<br /> Ndovu Rd, Dodoma, 탄자니아</p>";
-				var infowindow = new google.maps.InfoWindow({
-					content: contentString
-				});
-				
-				// 마커 생성
-				var marker = new google.maps.Marker({
-					map: map,
-					position: location,
-					title: "Majengo, Tanzania"
-				});
-				
-				// 마커 이벤트 부여
-				marker.addListener('mouseover', function(){
-					infowindow.open(map, marker);
-				});
-				
-				marker.addListener('mouseout', function(){
-					infowindow.close();
-				});
-			}
+
 		</script>
 	</head>
 	<body>
@@ -95,15 +61,12 @@
 		</nav>
 		
 		<!-- section ---------------------------- -->
-		<section id="section4">
+		<section id="section1">
 			<div class="container">
-				<h1>아프리카 버스 정류장</h1>
-				<div id="map"></div>
+				
 			</div>
 		</section>
-		<div class="clear">
-		
-		</div>
+		<div class="clear"></div>
 		<!-- footer -------------------------- -->
 		<footer>
 			<div class="top">
