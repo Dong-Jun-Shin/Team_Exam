@@ -3,9 +3,38 @@
  * 그래도 모르겠다면 html에서 작성된 수업예제를 참고해서 만들어주세요. 
  */
 
-// 알림창 출력 - 메소드 시작 (동준)
 $(function(){
-	alert("jQuery를 작성을 잘 모를 경우, js파일의 예제를 확인해주세요.");
-	alert("그럼 시작해주세요.");
+	/* 버튼5 메소드 (동준) */
+	$("#imgBtn").one("click", function(){
+		var img = $("<img>").attr({
+			"alt": "bono1.jpg",
+			"src": "../image/bono1.jpg",
+			"id" : "imgView",
+			"width": "300px",
+			"height": "300px"
+		});
+		
+		$(".box").append(img);
+		$("#imgView").hide(1);
+		$("#imgView").show(1000);
+		
+		setInterval(changeImg, 6000);
+	});
+	
+	//이미지 변경하는 함수
+	var index=0;
+	function changeImg(){
+		
+		if(index < 2)
+			index++;
+		else
+			index = 0;
+		
+		$("#imgView").fadeOut(1000).delay(1500);
+		$("#imgView").attr("src", "../image/bono" + (index+1) + ".jpg");
+		$("#imgView").delay(1500).fadeIn(1000);
+	}
+	/* 버튼5 메소드 종료(동준) */
 });
-// 알림창 출력 - 메소드 끝
+
+
