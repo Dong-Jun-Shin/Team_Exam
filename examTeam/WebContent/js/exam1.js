@@ -4,6 +4,16 @@
  */
 
 $(function(){
+	var sum = 0;
+	// 횟수 출력 - 메소드 시작 (예리)
+	$('fieldset > div:nth-child(4)').click(function(){
+		var h3 = $('<h3>');
+		sum += 1;
+		h3.append(sum);
+		
+		$('fieldset > div:nth-child(4)').append(h3);
+	});
+	// 횟수 출력 - 메소드 끝 (예리)
 	/* 버튼5 메소드 (동준) */
 	$("#imgBtn").one("click", function(){
 		var img = $("<img>").attr({
@@ -35,6 +45,7 @@ $(function(){
 		$("#imgView").delay(1500).fadeIn(1000);
 	}
 	/* 버튼5 메소드 종료(동준) */
+	
 });
 
 
