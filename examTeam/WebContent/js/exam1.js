@@ -4,8 +4,8 @@
  */
 
 $(function(){
-	var sum = 0;
 	// 횟수 출력 - 메소드 시작 (예리)
+	var sum = 0;
 	$('fieldset > div:nth-child(4)').click(function(){
 		var h3 = $('<h3>');
 		sum += 1;
@@ -14,6 +14,7 @@ $(function(){
 		$('fieldset > div:nth-child(4)').append(h3);
 	});
 	// 횟수 출력 - 메소드 끝 (예리)
+	
 	/* 버튼5 메소드 (동준) */
 	$("#imgBtn").one("click", function(){
 		var img = $("<img>").attr({
