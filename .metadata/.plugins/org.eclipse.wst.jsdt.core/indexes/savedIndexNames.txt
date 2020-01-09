@@ -1,8 +1,0 @@
-INDEX VERSION 1.4+C:\Team_Exam\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-56268722.index
-3531550561.index
-3445422526.index
-70959657.index
-2169939794.index
-4167024031.index
-3045030105.index
