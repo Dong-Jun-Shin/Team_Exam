@@ -1,4 +1,5 @@
-﻿legend {
+﻿/* 공통 부분 */
+legend {
 	font-size: 25px;
 }
 
@@ -22,3 +23,11 @@ button.multiButton{
 	color: white;
 	font-weight: bold;
 }
+
+/* 버튼5 스타일 (동준) */
+.box{
+	width: 300px;
+	height: 300px;
+	border: none;
+}
+/* 버튼5 스타일 종료(동준) */
