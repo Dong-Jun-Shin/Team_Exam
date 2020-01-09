@@ -3,9 +3,15 @@
  * 그래도 모르겠다면 html에서 작성된 수업예제를 참고해서 만들어주세요. 
  */
 
-// 알림창 출력 - 메소드 시작 (동준)
 $(function(){
-	alert("jQuery를 작성을 잘 모를 경우, js파일의 예제를 확인해주세요.");
-	alert("그럼 시작해주세요.");
+	var sum = 0;
+	// 횟수 출력 - 메소드 시작 (예리)
+	$('fieldset > div:nth-child(4)').click(function(){
+		var h3 = $('<h3>');
+		sum += 1;
+		h3.append(sum);
+		
+		$('fieldset > div:nth-child(4)').append(h3);
+	});
+	// 횟수 출력 - 메소드 끝
 });
-// 알림창 출력 - 메소드 끝
