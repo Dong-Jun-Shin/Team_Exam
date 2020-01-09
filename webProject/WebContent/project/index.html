@@ -10,10 +10,120 @@
 		<link rel="apple-touch-icon" href="./image/icon.png" />
 
 		<link rel="stylesheet" type="text/css" href="./css/main.css">
+		<link rel="stylesheet" type="text/css" href="./css/index.css">
+		<link rel="stylesheet" type="text/css" href="./css/navigation.css">
 		
 		<script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="./plugins/slidesJS/jquery.slides.min.js"></script>
 		<script type="text/javascript">
+			$(function(){
+				/* 배너 영역, slide */
+				$("#slides1").slidesjs({
+					width: 1040,
+					height: 300,
+					play: {
+						active : true,
+						auto : true,
+						interval : 2500,
+						swap : true,
+						effect : "fade"
+					}
+				});
+				
+				$("#slides2").slidesjs({
+					width: 5,
+					height: 6,
+					play: {
+						active : false,
+						auto : true,
+						interval : 7000,
+						effect : "slide"
+					},
+					navigation : {
+						/* 버튼의 표시 여부 설정 */
+						active : false,
+						/* 버튼 클릭시 적용될 효과 */
+					},
+					/* (pagination)현재 위치에 대한 표시 여부와 클릭했을 경우의 효과 제어 */
+					pagination : {
+						/* 버튼의 표시 여부 설정 */
+						active : false,
+						/* 버튼 클릭시 적용될 효과 */
+					}
+				});
+				
+				/* 알림판 영역, tab */
+				$.ajax({
+					url: "./json/notice_board.json",
+					type: "get",
+					dataType: "json",
+					timeout: 30000,
+					cache: false,
+					
+					success: function(json){
+						var notice = json.notice.b1;
+						
+						
+						var li = $("<li>");
+						$(notice).each(function(){
+							var title = this.title;
+							var date = this.date;
+							
+							addList(title, date, li);
+							$("ul.panel").html(li);
+						});
+					},
+					
+					error: function(xhr, textStatus, errorThrown){
+						$("ul.panel").html(textStatus + "(HTTP-" + xhr.status + " / " + errorThrown + ")");
+					}
+				});
+				
+				// 탭 클릭시, 콘텐츠 로드
+				$("ul.tab li a").click(function(){
+					$("ul.tab li a").not(this).removeClass("selected");
+					$(this).addClass("selected");
 
+					var index = $(this).attr("href");
+					
+					$.get("./json/notice_board.json", function(json){
+						var list = [json.notice.b1, json.notice.b2, json.notice.b3, json.notice.b4];
+						
+						console.log(list);
+						console.log(index);
+						
+						var hunk = list[index];
+						
+						var li = $("<li>");
+						$(hunk).each(function(){
+							var title = this.title; 
+							var date = this.date;
+							
+							addList(title, date, li);
+							$("ul.panel").html(li);
+						});
+					});
+					
+					return false;
+				});
+				
+				/* 광고 영역, */
+				
+				/* 일정 영역, */
+				
+				/* 행사 영역, */
+			});
+			
+			function addList(title, date, li){
+				var div = $("<div>");
+				var h2 = $("<h2>").attr("class", "head");
+				var p = $("<p>").attr("class", "content");
+				
+				h2.html(title);
+				p.html(date);
+				div.append(h2).append(p)
+				li.append(div);
+			};
 		</script>
 	</head>
 	<body>
@@ -62,27 +172,45 @@
 		<!-- section ---------------------------- -->
 		<section id="section0">
 			<div class="container">
-				<div class="leftBox">
-					<div class="graph1">
-						<!-- 그래프1 추가 -->
-					</div>
-					<div class="graph2">
-						<!-- 그래프2 추가 -->
+				<div class="main">
+					<div id="slides1">
+						<img src="./image/banner1.gif" />
+						<img src="./image/banner2.gif" />
 					</div>
 				</div>
-				<div class="rigthBox">
-					<div class="imgBox">
-						<!-- 이미지 추가 -->
+				<div class="notice large box left">
+					<ul class="tab">
+						<li><a href="0" class="selected">공지사항</a></li>
+						<li><a href="1">채용정보</a></li>
+						<li><a href="2">박물관 동정</a></li>
+						<li><a href="3">보도자료</a></li>
+					</ul>
+					<ul class="panel">
+					</ul>
+				</div>
+				<div id="panda" class="notice small box right">
+					<div id="slides2">
+						<img src="./image/addon.gif" alt="도도한 판다"/>
+						<img src="./image/addon1.gif" alt="진주 판다"/>
+						<img src="./image/addon2.gif" alt="비율 판다"/>
+						<img src="./image/addon3.gif" alt="신선 판다"/>
 					</div>
-					<div class="table">
-						<!-- 테이블 추가 -->
-					</div>
+					<!-- 광고 추가 -->
+				</div>
+				<div class="text left">문화 행사</div>
+				<div class="culture small box left">
+					<p>일정 영역</p>
+					<!-- 일정 추가 -->
+				</div>
+				<div class="culture large box right">
+					<p>행사 영역</p>
+					<!-- 행사 추가 -->
 				</div>
 			</div>
 		</section>
 		
 		<!-- footer -------------------------- -->
-		<footer>
+		<footer class="left">
 			<div class="top">
 				<div class="container">
 					<span>다운로드</span>
