@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+/* section3 */
+#section3{
+	height: 600px;
+}
+
+#section3 h1{
+	padding-left: 10px;
+	margin-bottom: 15px;
+}
+
+#section3 .box{
+	width: 238px;
+	height: 300px;
+	float: left;
+	background: white;
+	margin: 0px 10px;
+	border: 1px solid #cbcbcb;
+}
+
+#section3 .box > .image_box{
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+}
+
+#section3 .box > .image_box img{
+	height: 100%;
+	cursor: pointer;
+}
+
+#section3 .box > .des{
+	padding: 10px 15px;
+	/* 자동 줄바꿈 */
+	word-break: break-all; 
+	color: #333;
+}
