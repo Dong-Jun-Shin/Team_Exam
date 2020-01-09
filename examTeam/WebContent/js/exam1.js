@@ -46,6 +46,24 @@ $(function(){
 	}
 	/* 버튼5 메소드 종료(동준) */
 	
+	
+	/*버튼3 메서드(석현)*/
+	$("#text").click(function(){
+		$.ajax({
+			url:"../txt/exam.txt",
+			type: "get",
+			dataType: "text",
+			success : function(data){
+				$("#result").html(data);
+			},
+			error : function(xhr, textStatus, errorThrown) {
+				$("#result").html(textStatus + " (HTTP-)"+xhr.status+"/"+errorThrown+")");
+			}
+		
+		});
+	});/*버튼3 메서드 종료(석현)*/
+	
+	
 });
 
 
