@@ -17,7 +17,7 @@
 		<script type="text/javascript" src="./plugins/slidesJS/jquery.slides.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
-				/* 배너 영역, slide */
+				/* 배너 영역, 광고 영역 slide */
 				$("#slides1").slidesjs({
 					width: 1040,
 					height: 300,
@@ -53,30 +53,17 @@
 				});
 				
 				/* 알림판 영역, tab */
-				$.ajax({
-					url: "./json/notice_board.json",
-					type: "get",
-					dataType: "json",
-					timeout: 30000,
-					cache: false,
+				$.get("./json/notice_board.json", function(json){
+					var notify = json.notice.notify;
 					
-					success: function(json){
-						var notice = json.notice.b1;
+					var li = $("<li>");
+					$(notify).each(function(){
+						var title = this.title;
+						var date = this.date;
 						
-						
-						var li = $("<li>");
-						$(notice).each(function(){
-							var title = this.title;
-							var date = this.date;
-							
-							addList(title, date, li);
-							$("ul.panel").html(li);
-						});
-					},
-					
-					error: function(xhr, textStatus, errorThrown){
-						$("ul.panel").html(textStatus + "(HTTP-" + xhr.status + " / " + errorThrown + ")");
-					}
+						addList(title, date, li);
+						$("ul.panel").html(li);
+					});
 				});
 				
 				// 탭 클릭시, 콘텐츠 로드
@@ -87,7 +74,7 @@
 					var index = $(this).attr("href");
 					
 					$.get("./json/notice_board.json", function(json){
-						var list = [json.notice.b1, json.notice.b2, json.notice.b3, json.notice.b4];
+						var list = [json.notice.notify, json.notice.employ, json.notice.movements, json.notice.report];
 						
 						console.log(list);
 						console.log(index);
@@ -107,12 +94,43 @@
 					return false;
 				});
 				
-				/* 광고 영역, */
-				
 				/* 일정 영역, */
+				$.get("./json/schedule.json", function(json){
+					$("div#schedule strong:nth-child(1)").html(json.schedule.title);
+					
+					var item = json.schedule.item;
+					var div = $("div#schedule");
+					
+					$(item).each(function(){
+						var category = this.category;
+						var content = this.content;
+						addSchedule(category, content, div);
+					});
+				});
 				
+				$("span#date").html(getDate());
+
 				/* 행사 영역, */
+				$.get("./json/culture.json", function(json){
+						var div = $("div#culture > div:nth-child(2)");
+				
+						addCulture(json, div);
+				});
 			});
+			
+			function addCulture(json, div){
+				//span title
+				var title = $("<strong>").html(json.culture.title);
+				div.children().eq(0).html(title);
+				
+				//ul 
+				var li = div.children().eq(1).children(); 
+				var element = [json.culture.host, json.culture.condition, json.culture.date, json.culture.price, json.culture.info];
+				for (var i = 0; i < element.length; i++) {
+					li.eq(i).append(element[i]);
+				}				
+				
+			}
 			
 			function addList(title, date, li){
 				var div = $("<div>");
@@ -123,6 +141,33 @@
 				p.html(date);
 				div.append(h2).append(p)
 				li.append(div);
+			};
+			
+			function addSchedule(category, content, div){
+				var a = $("<a>");
+				var strong = $("<strong>").attr("class", "category");
+				var span = $("<span>");
+				
+				strong.html(category);
+				span.html(content);
+				a.append(strong).append(span);
+				div.append(a);
+			};
+			
+			function getDate(){
+				var mydate = new Date();
+				
+				var yy = mydate.getFullYear();
+				var mm = mydate.getMonth() + 1;
+				var dd = mydate.getDate();
+				
+				var days = ["일", "월", "화", "수", "목", "금", "토"];
+				var i = mydate.getDay();
+				var day = days[i];
+				
+				var result = yy + "년 " + mm + "월 " + dd + "일 (" + day + ")";
+				
+				return result;
 			};
 		</script>
 	</head>
@@ -176,19 +221,20 @@
 					<div id="slides1">
 						<img src="./image/banner1.gif" />
 						<img src="./image/banner2.gif" />
+						<img src="./image/banner3.gif" />
 					</div>
 				</div>
-				<div class="notice large box left">
+				<div class="margin_bot large_notice box left">
 					<ul class="tab">
 						<li><a href="0" class="selected">공지사항</a></li>
 						<li><a href="1">채용정보</a></li>
 						<li><a href="2">박물관 동정</a></li>
 						<li><a href="3">보도자료</a></li>
 					</ul>
-					<ul class="panel">
+					<ul class="panel shadow">
 					</ul>
 				</div>
-				<div id="panda" class="notice small box right">
+				<div id="panda" class="margin_bot small_addon box right">
 					<div id="slides2">
 						<img src="./image/addon.gif" alt="도도한 판다"/>
 						<img src="./image/addon1.gif" alt="진주 판다"/>
@@ -198,13 +244,28 @@
 					<!-- 광고 추가 -->
 				</div>
 				<div class="text left">문화 행사</div>
-				<div class="culture small box left">
-					<p>일정 영역</p>
-					<!-- 일정 추가 -->
+				<div class="margin_top small_schedule box left">
+					<div id="schedule" class="shadow">
+						<strong></strong><span id="date"></span>
+						<img id="add" alt="schedule_more.gif" src="./image/schedule_more.gif" />
+					</div>
 				</div>
-				<div class="culture large box right">
-					<p>행사 영역</p>
-					<!-- 행사 추가 -->
+				<div class="margin_top large_culture box right">
+					<div id="culture" class="shadow">
+						<div>
+							<img alt="culture.jpg" src="./image/culture.jpg"/>
+						</div>
+						<div>
+							<span></span>
+							<ul>
+								<li><strong>주최 : </strong></li>
+								<li><strong>제한연령 : </strong></li>
+								<li><strong>공연일시 : </strong></li>
+								<li><strong>가격 : </strong></li>
+								<li><strong>공연안내 : </strong></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
