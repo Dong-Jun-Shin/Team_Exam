@@ -1,0 +1,2 @@
+<p style = "color:red"><strong>오늘은 스터디 빨리 끝냅시다!!!!</strong></p>
+<p style = "color:red"><strong>9시 전에 집에 갑시다!!!</strong></p>

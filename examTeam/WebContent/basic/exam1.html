@@ -10,6 +10,7 @@
 		
 		<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="../js/exam1.js"></script>
+
 		<script type = "text/javascript">
 			$(function(){
 				$(".multiButton").click(function(){
@@ -32,6 +33,7 @@
 
 		
 		
+
 	</head>
 	<body>
 		<fieldset>
@@ -39,10 +41,11 @@
 			<div>
 				<p><h3>공통 부분 : 먼저 끝난 분은 자기 영역을 css파일이나 jQuery로 꾸며주셔도 됩니다.</h3></p>
 			</div>
-			<div>
+			<div id="fadeOut">
 				<h2>소명</h2>
 				<button type="button" class="multiButton">클릭 시, 이미지 출력</button>
 				<p><strong>img태그가 생성</strong>되고 이미지를 <strong>페이드 아웃 효과를 적용</strong>해서 출력해주세요. <br />(없는 이미지는 WebContent에 image폴더를 만들어서 그 안에 추가하고 만들어주세요.)</p>
+				<img id="image" src="../image/images.jpg">
 			</div>
 			<div>
 				<h2>예리</h2>
@@ -62,8 +65,9 @@
 			</div>
 			<div>
 				<h2>동준</h2>
-				<button type="button" class="multiButton">클릭 시, 이미지를 출력</button>
+				<button type="button" class="multiButton" id="imgBtn">클릭 시, 이미지를 출력</button>
 				<p><strong>이미지가 출력</strong>되고, 출력된 이미지는 <strong>1초마다 변경</strong>되고, <strong>show 기능을 적용</strong>해주세요.</p>
+				<div class="box"></div>
 			</div>
 		</fieldset>
 		
