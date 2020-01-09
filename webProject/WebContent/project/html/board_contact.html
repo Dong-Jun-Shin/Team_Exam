@@ -11,10 +11,37 @@
 
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
 		<link rel="stylesheet" type="text/css" href="../css/board.css">
+		<link rel="stylesheet" type="text/css" href="../css/contact.css">
+		
 		
 		<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript">
+		function template(no, title, user, date, response){
+			var $tbody = $('div.example > table > tbody#board_list');
+			
+			var $element = $('#item-template').clone().removeAttr('id');
+			$element.find(".no").attr("data-num", no).html(no);;
+			$element.find('.title').html(title);
+			$element.find('.user').html(user);
+			$element.find('.date').html(date);
+			$element.find('.response').html(response);
+			
+			$tbody.append($element);
+		}
+		
+		$(function(){
 
+			$.get("../json/contact.json", {}, function(json){
+				$("h1.title").html(json.name);
+				$("div.exec:eq(0) > span").html(json.total);
+			
+				var item = json.item;
+				
+				for (var i = 0; i < item.length; i++){
+					template(item[i].no, item[i].title, item[i].user, item[i].date, item[i].response);
+				}
+			});
+		});
 		</script>
 	</head>
 	<body>
@@ -28,6 +55,7 @@
 				</ul>
 			</div>
 		</header>
+		
 		
 		<!-- nav --------------------------------- -->
 		<nav>
@@ -62,11 +90,47 @@
 		
 		<!-- section ---------------------------- -->
 		<section id="section5">
+	
 			<div class="container">
+			    <h1 class="title"></h1>
+            
+            <!-- 게시물 수 출력될 곳 -->
+            <div class="exec">
+             	  게시판: <span></span>건
+            </div>
+            <div class="example">
+				<table>
+				<thead>
+					<tr>
+						<th class="no">번호</th>
+						<th class="title">제목</th>
+						<th class="user">글쓴이</th>
+						<th class="date">등록일</th>
+						<th class="response">답변상태</th>
+					</tr>
+				</thead>
+				<tbody id="board_list">
+					<!-- 목록이 추력될 곳 -->
+					<tr id="item-template" class="list">
+						<td class="no"></td>
+						<td class="title"></td>
+						<td class="user"></td>
+						<td class="date"></td>
+						<td class="response"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>	
+		</div>
 				
-			</div>
+			
 		</section>
-		<div class="clear"></div>
+		<div class="clear"><select  id ="select">
+					<option>검색유형</option>	
+					<option>이름</option>
+					<option>등록일</option>	
+				</select>	<input type = "text" id = "text" />
+				<input type = "button" id = "search" value = "검색" /></div>
 		<!-- footer -------------------------- -->
 		<footer>
 			<div class="top">
