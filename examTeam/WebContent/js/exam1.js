@@ -4,6 +4,13 @@
  */
 
 $(function(){
+	/* 버튼1 메소드 (소명) */
+	$(function () {
+		 $("#fadeOut > .multiButton").click(function () {
+				$("#fadeOut > #image").fadeToggle(3000);
+		});
+	});
+	/* 버튼1 메소드 종료(소명) */
 	var sum = 0;
 	// 횟수 출력 - 메소드 시작 (예리)
 	$('fieldset > div:nth-child(4)').click(function(){

@@ -11,46 +11,6 @@
 		<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
 		<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="../js/exam1.js"></script>
-
-		<script type = "text/javascript">
-			$(function(){
-				$("#text").click(function(){
-					$.ajax({
-						url:"../txt/exam.txt",
-						type: "get",
-						dataType: "text",
-						success : function(data){
-							$("#result").html(data);
-						},
-						error : function(xhr, textStatus, errorThrown) {
-							$("#result").html(textStatus + " (HTTP-)"+xhr.status+"/"+errorThrown+")");
-						}
-					
-					});
-				});
-			
-				$(function () {
-					/*  $(".multiButton").click(function() {
-						$("#image").fadeOut(3000);
-					});  */
-					
-					 /* $("#fadeOut > .multiButton").click(function () {
-						$("#fadeOut > #image").fadeIn(1000);
-					});  
-					 $("#fadeOut > .multiButton").click(function () {
-							$("#fadeOut > #image").fadeOut(3000);
-					});  */
-					 $("#fadeOut > .multiButton").click(function () {
-							$("#fadeOut > #image").fadeToggle(3000);
-					});
-				});
-			});
-			
-		</script>
-
-		
-		
-
 	</head>
 	<body>
 		<fieldset>
