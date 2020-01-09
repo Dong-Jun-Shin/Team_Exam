@@ -1,0 +1,33 @@
+﻿/* 공통 부분 */
+legend {
+	font-size: 25px;
+}
+
+div{
+	margin: 20px 0px;
+	border-bottom: 1px solid lightgray;
+}
+
+div:nth-child(2) {
+	border-top: 1px solid lightgray;	
+}
+
+strong{
+	color: #FF4444;
+}
+
+button.multiButton{
+	width: 200px;
+	height: 40px;
+	background-color: black;
+	color: white;
+	font-weight: bold;
+}
+
+/* 버튼5 스타일 (동준) */
+.box{
+	width: 300px;
+	height: 300px;
+	border: none;
+}
+/* 버튼5 스타일 종료(동준) */

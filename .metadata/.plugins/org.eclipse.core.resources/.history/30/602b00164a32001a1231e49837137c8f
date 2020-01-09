@@ -1,0 +1,17 @@
+/*
+ * js 파일에 작성시, 잘 모르겠으면 아래를 참고해주세요.
+ * 그래도 모르겠다면 html에서 작성된 수업예제를 참고해서 만들어주세요. 
+ */
+
+// 알림창 출력 - 메소드 시작 (동준)
+$(function(){
+	var sum = 0;multiButton
+	$('.multiButton').click(function(){
+		var div = $('<h3>');
+		sum = sum+1;
+		div.document.append(sum);
+		
+		$('<h3>').append(sum + '<br/></h3>');
+	});
+});
+// 알림창 출력 - 메소드 끝
