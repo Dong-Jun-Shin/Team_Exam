@@ -14,7 +14,32 @@
 		
 		<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript">
-
+			$(function() {
+				var video_list = [
+					'<iframe id="1" width="1280" height="720" src="https://www.youtube.com/embed/R990HjX3Aqs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					'<iframe id="2" width="1280" height="720" src="https://www.youtube.com/embed/dOScCnlWPJo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					'<iframe id="3" width="1280" height="720" src="https://www.youtube.com/embed/EzvSLYtKnnc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					'<iframe id="4" width="1280" height="720" src="https://www.youtube.com/embed/-bP5iHlIv-I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+				];
+				
+				//load()함수는 파라미터로 전달받은 특정 경로릐 파일을 읽어들이는 기능을 한다.
+				$("div.vido").html(video_list[0]);
+				
+				 //탭 버튼의 클릭 처리
+				$("ul.tab li a").click(function () {
+					//클릭된 요서를 제외한 나머지에 pike 클래스 제거-->배경이미지 원상복구 
+					$("ul.tab li a").not(this).removeClass("pike");
+					
+					//틀릭된 요소에게 pike 클래스 적용--> 배경이미지 변경됨
+					$(this).addClass("pike");
+					
+					//클릭된 요소의 href 속성값이 가리키는 파일을 읽어서 <div>출력함
+					$("div.vido").html(video_list[$(this).attr("href")-1]); 
+					
+					//페이지 이동방지
+					return false;
+				});
+			});
 		</script>
 	</head>
 	<body>
@@ -33,7 +58,7 @@
 		<nav>
 			<div class="container">
 				<ul class="leftMenu">
-					<li class="active"><a href="../index.html">Home</a></li>
+					<li ><a href="../index.html">Home</a></li>
 					<li><a href="./gallery.html">갤러리</a></li>
 					<li class="dropBox">
 						<a href="./board_free.html">게시판</a>
@@ -43,7 +68,7 @@
 							<span><a href="./board_suggestion.html">건의 게시판</a></span>
 						</span>
 					</li>
-					<li class="dropBox">
+					<li class="active" class="dropBox">
 						<a href="./multi_music.html">멀티미디어</a>
 						<span class="dropmenu">
 							<span><a href="./multi_music.html">음악듣기</a></span>
@@ -63,10 +88,17 @@
 		<!-- section ---------------------------- -->
 		<section id="section7">
 			<div class="container">
-				
+				<ul class="tab">
+					<li><a href="1" class="pike">홍보영상</a></li>
+					<li><a href="2">아카데미</a></li>
+					<li><a href="3">무대제작</a></li>
+					<li><a href="4">축제영상</a></li>
+				</ul>
+				<div class="vido">
+					
+				</div>
 			</div>
 		</section>
-		<div class="clear"></div>
 		<!-- footer -------------------------- -->
 		<footer>
 			<div class="top">
