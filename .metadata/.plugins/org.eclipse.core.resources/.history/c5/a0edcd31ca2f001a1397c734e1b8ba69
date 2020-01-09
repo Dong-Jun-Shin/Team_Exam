@@ -1,0 +1,7 @@
+﻿legend {
+	font-size: 25px;
+}
+
+div{
+	border-bottom: 1px solid lightgray;
+}

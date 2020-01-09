@@ -1,0 +1,6 @@
+INDEX VERSION 1.4+C:\Users\user\Desktop\github\Team_Exam\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1583230754.index
+1285837119.index
+2717870916.index
+699122901.index
+1051117775.index
