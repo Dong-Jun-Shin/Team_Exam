@@ -14,7 +14,7 @@
 
 		<script type = "text/javascript">
 			$(function(){
-				$(".multiButton").click(function(){
+				$("#text").click(function(){
 					$.ajax({
 						url:"../txt/exam.txt",
 						type: "get",
@@ -71,7 +71,7 @@
 			</div>
 			<div>
 				<h2>석현</h2>
-				<button type="button" class="multiButton">클릭 시, 파일 내용 출력</button>
+				<button type="button" class="multiButton" id ="text">클릭 시, 파일 내용 출력</button>
 				<p><strong>p태그가 생성</strong>되고 <strong>txt파일의 내용을 출력</strong>해주세요. <br />(없는 txt는 WebContent에 txt폴더를 만들고 그 안에 추가하고 만들어주세요.)</p>
 				<div id = "result"></div>
 			</div>
