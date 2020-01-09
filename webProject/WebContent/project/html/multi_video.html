@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>나의 사이트</title>
+		
+		<link rel="shortcut icon" href="../image/icon.png" />
+		<link rel="apple-touch-icon" href="../image/icon.png" />
+
+		<link rel="stylesheet" type="text/css" href="../css/main.css">
+		<link rel="stylesheet" type="text/css" href="../css/multi_video.css">
+		
+		<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var video_list = [
+					'<iframe id="1" width="1280" height="720" src="https://www.youtube.com/embed/R990HjX3Aqs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					'<iframe id="2" width="1280" height="720" src="https://www.youtube.com/embed/dOScCnlWPJo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					'<iframe id="3" width="1280" height="720" src="https://www.youtube.com/embed/EzvSLYtKnnc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					'<iframe id="4" width="1280" height="720" src="https://www.youtube.com/embed/-bP5iHlIv-I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+				];
+				
+				//load()함수는 파라미터로 전달받은 특정 경로릐 파일을 읽어들이는 기능을 한다.
+				$("div.vido").html(video_list[0]);
+				
+				 //탭 버튼의 클릭 처리
+				$("ul.tab li a").click(function () {
+					//클릭된 요서를 제외한 나머지에 pike 클래스 제거-->배경이미지 원상복구 
+					$("ul.tab li a").not(this).removeClass("pike");
+					
+					//틀릭된 요소에게 pike 클래스 적용--> 배경이미지 변경됨
+					$(this).addClass("pike");
+					
+					//클릭된 요소의 href 속성값이 가리키는 파일을 읽어서 <div>출력함
+					$("div.vido").html(video_list[$(this).attr("href")-1]); 
+					
+					//페이지 이동방지
+					return false;
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- header ------------------------------ -->
+		<header>
+			<div class="container">
+				<div class="logo"><img src="../image/logo.png"></div>
+				<ul class="sidemenu">
+					<li><a href="../index.html">Home</a></li>
+					<li><a href="./site_map.html">Sitemap</a></li>
+				</ul>
+			</div>
+		</header>
+		
+		<!-- nav --------------------------------- -->
+		<nav>
+			<div class="container">
+				<ul class="leftMenu">
+					<li ><a href="../index.html">Home</a></li>
+					<li><a href="./gallery.html">갤러리</a></li>
+					<li class="dropBox">
+						<a href="./board_free.html">게시판</a>
+						<span class="dropmenu">
+							<span><a href="./board_free.html">자유 게시판</a></span>
+							<span><a href="./board_contact.html">문의 게시판</a></span>
+							<span><a href="./board_suggestion.html">건의 게시판</a></span>
+						</span>
+					</li>
+					<li class="active" class="dropBox">
+						<a href="./multi_music.html">멀티미디어</a>
+						<span class="dropmenu">
+							<span><a href="./multi_music.html">음악듣기</a></span>
+							<span><a href="./multi_video.html">동영상보기</a></span>
+						</span>
+					</li>
+					<li class="coming-soon"><a href="#">상품구매</a></li>
+					<li><a href="./location.html">찾아오시는 길</a></li>
+				</ul>
+				<ul class="rightMenu">
+					<li><a href="./join.html">회원가입</a></li>
+					<li><a href="./login.html">로그인</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<!-- section ---------------------------- -->
+		<section id="section7">
+			<div class="container">
+				<ul class="tab">
+					<li><a href="1" class="pike">홍보영상</a></li>
+					<li><a href="2">아카데미</a></li>
+					<li><a href="3">무대제작</a></li>
+					<li><a href="4">축제영상</a></li>
+				</ul>
+				<div class="vido">
+					
+				</div>
+			</div>
+		</section>
+		<!-- footer -------------------------- -->
+		<footer>
+			<div class="top">
+				<div class="container">
+					<span>다운로드</span>
+					<span>개인정보 처리 방침</span>
+					<span>저작권 지침 및 신고</span>
+					<span>이메일 무단 수집 거부</span>
+				</div>
+			</div>
+			<div class="container">
+				<address> 왕십리 캠퍼스 : 서울시 성동구 무학로2길 54 신방빌딩 4, 5층 Tel:02-441-6006</address>
+				<div class="copyright">
+					Copyright &copy; 2018 mrhi, Inc. All rights reserved.
+					Contact webmaster for more information. 02-441-6006
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
