@@ -1,0 +1,25 @@
+(각자 맡은 페이지)----------------------------
+전체 컨셉 및 디자인 - 예리
+
+(0) 메인 - index.html - 동준
+(1) 회원가입 - join.html - 동준
+(2) 로그인 - 완료
+(3) 갤러리 - 완료
+(4) 찾아오는 길 - 완료
+(5) 자유게시판 - board_free.html - 준영
+(5) 문의게시판 - board_contact.html - 석현
+(5) 건의게시판 - board_suggestion.html - 준영, 석현
+(6) 음악듣기 - multi_music.html - 예리
+(7) 동영상보기 - multi_video.html - 소명
+(8) Sitemap - site_map.html
+
+<<<< 각 문자는 다음의 의미를 가집니다. >>>>
+- 각 페이지의 섹션태그번호	(1)
+- 페이지 이름 		(메인)
+- 페이지 파일명 		(index.html)
+- 책임자 			(동준)
+
+--------------------------------------------------
+
+ㅇ 소스트리 각자 컴에 깔아서 Team_Exam 저장소에서 webProject로 자신의 컴에 clone만들어서 작업 진행
+(examTeam 말고 webProject 있음)
