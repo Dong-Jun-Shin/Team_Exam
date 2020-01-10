@@ -49,7 +49,7 @@
 					return;
 				}
 				
-				var img = $("<img>").attr("src", "../image/join_complete.png");
+				var img = $("<img>").attr("src", "../image/join_complete.png").attr("width", "650px");
 				$("#section1 > div.container").html(img);
 				form.reset();
 			}
@@ -102,7 +102,7 @@
 		<section id="section1">
 			<div class="container">
 				<form action="" method="get" name="infoForm">
-					<fieldset class="frame">
+					<fieldset class="shadow frame ">
 						<legend>정보 기입</legend>
 						<div class="box">
 							<span>
@@ -128,7 +128,7 @@
 								<input type="password" name="in_pw" maxlength="20">
 							</span>
 						</div>
-						<input type="button" value="리뷰전송" onclick="formValid()">
+						<input type="button" value="회원가입" onclick="formValid()">
 					</fieldset>
 				</form>
 			</div>
