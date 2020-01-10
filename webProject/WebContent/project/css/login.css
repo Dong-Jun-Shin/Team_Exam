@@ -112,7 +112,7 @@ section{
 	margin-left: 10px;
 }
 
-#section2 .alert button:hover{
+#section2 .alert button:hover, .activeLogin, .activeLogin a{
 	color: white;
 	background: #00bd39;
 }

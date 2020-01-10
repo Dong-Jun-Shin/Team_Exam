@@ -2,7 +2,7 @@
 
 /* section3 */
 #section3{
-	height: 600px;
+	height: 730px;
 }
 
 #section3 h1{
@@ -15,7 +15,7 @@
 	height: 300px;
 	float: left;
 	background: white;
-	margin: 0px 10px;
+	margin: 10px 10px;
 	border: 1px solid #cbcbcb;
 }
 

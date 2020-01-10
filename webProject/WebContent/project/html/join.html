@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-		<title>나의 사이트</title>
+		<title>예술의 전당</title>
 		
 		<link rel="shortcut icon" href="../image/icon.png" />
 		<link rel="apple-touch-icon" href="../image/icon.png" />
@@ -14,7 +14,45 @@
 		
 		<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript">
-
+			function formValid(){
+				var form = document.infoForm;
+				
+				// 이름 검증
+				if(form.in_name.value.replace(/\s/g, "") == ""){
+					alert("이름을 입력해주세요.");
+					form.in_name.value="";
+					form.in_name.focus();
+					return;
+				}
+	
+				// 전화번호 검증
+				if(form.in_phone.value.replace(/\s/g, "") == ""){
+					alert("전화번호를 입력해주세요.");
+					form.in_phone.value="";
+					form.in_phone.focus();
+					return;
+				}
+				
+				// 이메일 검증
+				if(form.in_email.value.replace(/\s/g, "") == ""){
+					alert("이메일을 입력해주세요.");
+					form.in_email.value="";
+					form.in_email.focus();
+					return;
+				}
+				
+				// 비밀번호 검증
+				if(form.in_pw.value.replace(/\s/g, "") == ""){
+					alert("이메일을 입력해주세요.");
+					form.in_pw.value="";
+					form.in_pw.focus();
+					return;
+				}
+				
+				var img = $("<img>").attr("src", "../image/join_complete.png");
+				$("#section1 > div.container").html(img);
+				form.reset();
+			}
 		</script>
 	</head>
 	<body>
@@ -33,7 +71,7 @@
 		<nav>
 			<div class="container">
 				<ul class="leftMenu">
-					<li class="active"><a href="../index.html">Home</a></li>
+					<li><a href="../index.html">Home</a></li>
 					<li><a href="./gallery.html">갤러리</a></li>
 					<li class="dropBox">
 						<a href="./board_free.html">게시판</a>
@@ -54,7 +92,7 @@
 					<li><a href="./location.html">찾아오시는 길</a></li>
 				</ul>
 				<ul class="rightMenu">
-					<li><a href="./join.html">회원가입</a></li>
+					<li class="activeLogin"><a href="./join.html">회원가입</a></li>
 					<li><a href="./login.html">로그인</a></li>
 				</ul>
 			</div>
@@ -63,7 +101,36 @@
 		<!-- section ---------------------------- -->
 		<section id="section1">
 			<div class="container">
-				
+				<form action="" method="get" name="infoForm">
+					<fieldset class="frame">
+						<legend>정보 기입</legend>
+						<div class="box">
+							<span>
+								<label>이름 : </label>
+								<input type="text" name="in_name" maxlength="10">
+							</span>
+						</div>
+						<div class="box">
+							<span>
+								<label>전화번호 : </label>
+								<input type="tel" name="in_phone" maxlength="13">
+							</span>
+						</div>
+						<div class="box">
+							<span>
+								<label>이메일 : </label>
+								<input type="email" name="in_email" maxlength="50">
+							</span>
+						</div>
+						<div class="box">
+							<span>
+								<label>비밀번호 : </label>
+								<input type="password" name="in_pw" maxlength="20">
+							</span>
+						</div>
+						<input type="button" value="리뷰전송" onclick="formValid()">
+					</fieldset>
+				</form>
 			</div>
 		</section>
 		<div class="clear"></div>

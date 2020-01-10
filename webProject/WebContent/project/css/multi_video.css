@@ -19,7 +19,7 @@ section#section7 {
 ul.tab {
 	list-style: none;
 	position: relative;
-	z-index: 100;
+	z-index: 1;
 	margin-bottom: 1px;
 }
 /* 개별 버튼에 대한 기본 크기와 가로 정렬*/
