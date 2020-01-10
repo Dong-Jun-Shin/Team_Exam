@@ -57,6 +57,11 @@ fieldset.frame div.box{
     margin: 10px 0px 60px 0px;
 }
 
+fieldset.frame div.box strong{
+	color: red;
+	margin: 10px;
+}
+
 fieldset.frame input[type="button"]{
 	margin: 40px 20px 50px 260px;
     background: #00bd39;
