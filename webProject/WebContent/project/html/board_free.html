@@ -10,11 +10,38 @@
 		<link rel="apple-touch-icon" href="../image/icon.png" />
 
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
-		<link rel="stylesheet" type="text/css" href="../css/board.css">
-		
+		<link rel="stylesheet" type="text/css" href="../css/board_free.css">
+
 		<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript">
-
+			function template(no, subject, writer, hit, date){
+				var $tbody = $('div.example > table > tbody#board_list');
+				
+				var $element = $('#free-template').clone().removeAttr('id');
+				$element.find(".no").attr("data-num", no).html(no);;
+				$element.find('.subject').html(subject);
+				$element.find('.writer').html(writer);
+				$element.find('.hit').html(hit);
+				$element.find('.date').html(date);
+				
+				$tbody.append($element);
+			}
+			
+			$(function(){
+				//get 방식으로 json 데이터의 요청
+				$.get("../json/board_free.json", {}, function(json){
+					
+					//제목, 내용, 전체 글 수를 화면에 출력
+					$("h1.title").html(json.title);
+					$("div.exec:eq(0) > span").html(json.total);
+					
+					var item = json.item;
+					
+					for (var i = 0; i < item.length; i++){
+						template(item[i].no, item[i].subject, item[i].writer, item[i].hit, item[i].date);
+					}
+				});
+			});	//$ 종료구문
 		</script>
 	</head>
 	<body>
@@ -63,7 +90,39 @@
 		<!-- section ---------------------------- -->
 		<section id="section5">
 			<div class="container">
+				<!-- 게시판 제목이 출력될 곳 -->
+				<h1 class="title"></h1>
 				
+				<!-- 게시물 수 출력될 곳 -->
+				<div class="exec">
+					게시판: <span></span>건
+				</div>
+				<div class="example">
+					<table>
+						<thead>
+							<tr>
+								<th class="no">번호</th>
+								<th class="subject">제목</th>
+								<th class="writer">글쓴이</th>								
+								<th class="date">작성일시</th>
+								<th class="hit">조회수</th>
+							</tr>
+						</thead>
+						<tbody id="board_list">
+							<!-- 목록이 추력될 곳 -->
+							<tr id="free-template" class="list">
+								<td class="no"></td>
+								<td class="left subject"></td>
+								<td class="writer"></td>
+								<td class="date"></td>
+								<td class="hit"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="plus">
+					<input type="button" id="more" value="더보기" />
+				</div>
 			</div>
 		</section>
 		<div class="clear"></div>

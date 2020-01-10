@@ -61,13 +61,9 @@ table tbody tr {
 	width: 10%;
 	color:#00bd39;
 }
-.search{
-	text-align: center;
-}
-.text{
-	text-align: center;
-}
+
 #search{
+	color:white;
 	background:#00bd39;
 	border:1px solid #00bd39;
 }
@@ -77,12 +73,18 @@ table tbody tr {
 	
 }
 
-#item-template {
+#select {
+	margin-top: 50px;
+}
+
+#contact-template {
 	display: none;
 }
 td.title{
 	text-align:left;
 }
-div.clear{
-	text-align:center
+.clear{
+	text-align:center;
+	margin-bottom: 40px;
+	
 }
